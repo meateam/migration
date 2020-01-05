@@ -110,4 +110,6 @@ func (s *Search) Run(errc chan error) {
 			return
 		}
 	}
+
+	fmt.Println("Search migration Run successful")
 }

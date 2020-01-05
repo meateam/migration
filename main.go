@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	migration "migration/migrations"
+	migration "github.com/meateam/migration/migrations"
 	"os"
 	"sync"
 )
@@ -76,4 +76,6 @@ func main() {
 		default:
 		}
 	}
+
+	fmt.Println("Migration done")
 }

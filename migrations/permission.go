@@ -63,7 +63,10 @@ func (p *Permission) Run(errc chan error) {
 		defer wg.Done()
 		if err := p.RunReadRoleUpdate(); err != nil {
 			errc <- err
+			return
 		}
+
+		fmt.Println("Permission migration RunReadRoleUpdate successful")
 	}()
 
 	// go func() {
@@ -77,7 +80,10 @@ func (p *Permission) Run(errc chan error) {
 		defer wg.Done()
 		if err := p.RunSetCreator(); err != nil {
 			errc <- err
+			return
 		}
+
+		fmt.Println("Permission migration RunSetCreator successful")
 	}()
 
 	wg.Wait()

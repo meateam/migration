@@ -41,14 +41,20 @@ func (f *File) Run(errc chan error) {
 		defer wg.Done()
 		if err := f.RunSetFloat(); err != nil {
 			errc <- err
+			return
 		}
+
+		fmt.Println("File migration RunSetFloat successful")
 	}()
 
 	go func() {
 		defer wg.Done()
 		if err := f.RunUpdateNameParentOwnerIndex(); err != nil {
 			errc <- err
+			return
 		}
+
+		fmt.Println("File migration RunUpdateNameParentOwnerIndex successful")
 	}()
 
 	wg.Wait()

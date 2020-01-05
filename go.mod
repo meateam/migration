@@ -1,4 +1,4 @@
-module migration
+module github.com/meateam/migration
 
 go 1.13
 
