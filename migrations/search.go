@@ -105,9 +105,16 @@ func (s *Search) Run(errc chan error) {
 			searchFile.FileOrId = &spb.File_Parent{Parent: file.Parent.Hex()}
 		}
 
-		if _, err := s.client.CreateFile(context.Background(), searchFile); err != nil {
+		res, err := s.client.CreateFile(context.Background(), searchFile)
+		if err != nil {
 			errc <- err
 			return
+		}
+
+		if res.GetId() == searchFile.GetId() {
+			msgFormat := "failed indexing file %s to Search-Service: unexpected res.Id," +
+				"expected %s, but got \"%s\""
+			errc <- fmt.Errorf(msgFormat, res.GetId(), searchFile.GetId(), res.GetId())
 		}
 	}
 
