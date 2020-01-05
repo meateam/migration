@@ -8,5 +8,14 @@ spec:
       containers:
       - name: migration
         image: bluehub.azurecr.io/meateam/migration:1.0
+        env: 
+        - name: FILE_MONGO_CONN_STRING
+          value: "mongodb://mongo:27017/dbName"
+        - name: FILE_SERVICE_URL
+          value: "file-service:8080"
+        - name: PERMISSION_MONGO_CONN_STRING
+          value: "mongodb://mongo:27017/dbName"
+        - name: SEARCH_SERVICE_URL
+          value: "search-service:8080"
       restartPolicy: Never
   backoffLimit: 4

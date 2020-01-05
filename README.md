@@ -7,4 +7,4 @@
 migration:latest`
 
 
-`kubectl apply -f job.yaml --namepsace <namespace>`
+`kubectl apply -f job.yaml -n <namespace>`
