@@ -1,0 +1,6 @@
+version: '2.1'
+
+services:
+  kdrive-write-migration:
+    image: kdrive-write-migration
+    build: .
